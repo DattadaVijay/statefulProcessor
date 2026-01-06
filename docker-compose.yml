@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  spark-master:
+    container_name: spark-master
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: bash -c "/opt/spark/sbin/start-master.sh && tail -f /opt/spark/logs/*"
+    ports:
+      - "7077:7077"
+      - "4040:4040"
+    volumes:
+      - ./project:/project
+      - ./checkpoints:/checkpoints
+
+  spark-worker:
+    container_name: spark-worker
+    depends_on:
+      - spark-master
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command: bash -c "/opt/spark/sbin/start-worker.sh spark://spark-master:7077 && tail -f /opt/spark/logs/*"
+    volumes:
+      - ./project:/project
+      - ./checkpoints:/checkpoints
