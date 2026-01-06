@@ -9,6 +9,8 @@ resources: # changed it
       libraries:
         - file:
             path: ../src/data_gen.py
+        - file:
+            path: ../src/state_stream.py
       
       configuration:
         bundle.sourcePath: ${workspace.file_path}/src
