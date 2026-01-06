@@ -1,3 +1,4 @@
+from pyspark import pipelines as dp
 @dp.table(
     name="events_silver",
     comment="Running count per user with inactivity timeout",
