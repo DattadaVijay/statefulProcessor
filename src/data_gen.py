@@ -1,5 +1,5 @@
 from pyspark import pipelines as dp
-from pysaprk.sql.functions import col
+from pyspark.sql.functions import col
 
 @dp.table(
     name="events_bronze",
