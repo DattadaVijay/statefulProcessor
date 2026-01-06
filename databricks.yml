@@ -1,0 +1,10 @@
+bundle:
+  name: stateful_processor
+
+include: 
+  - resources/*.yml
+
+targets: 
+  dev:
+    workspace:
+      host: https://dbc-e3761da8-7d95.cloud.databricks.com
